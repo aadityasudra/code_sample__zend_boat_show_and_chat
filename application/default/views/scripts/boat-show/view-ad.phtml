@@ -1,0 +1,60 @@
+<script>
+	$(document).ready(function(){
+		showTab('<?php echo($this->sDefaultTab); ?>');
+    //$('#chatIframe').attr('src', '/chat?room=<?php echo($this->sChatRoomID); ?>');
+	});
+</script>
+<div class="boat-show-view-ad">
+	<div class="header"><?php echo($this->ad_header['title']); ?> <span><?php echo($this->ad_header['manufacturer']); ?></span></div>
+	<div class="body">
+		<div class="left">
+			<div class="ad-display-tab-headers">
+				<ul>
+					<li class="photos hide" id="photos_title"><a href="javascript:;">Photos</a></li>
+					<?php if(null === $this->tab_video['youtube_video_id']) { ?>
+						<li class="video no-content">Video</li>
+					<?php } else { ?>
+						<li class="video hide" id="video_title"><a href="javascript:;">Video</a></li>
+					<?php } ?>
+					<li class="specifications hide" id="specifications_title"><a href="javascript:;">Specifications</a></li>
+					<li class="dealer-info hide" id="dealer_info_title"><a href="javascript:;">Dealer Info</a></li>
+					<li class="request-info hide" id="request_info_title"><a href="javascript:;">Request Info</a></li>
+				</ul>
+			</div>
+			<div class="ad-display-tab-bodies">
+				<div class="photos-body hide" id="photos_body">
+					<?php echo($this->partial('boat-show/view-ad--tab-photos.phtml', array('tab_photos' => $this->tab_photos))); ?>
+				</div>
+				<div class="video-body hide" id="video_body">
+					<?php echo($this->partial('boat-show/view-ad--tab-video.phtml', array('tab_video' => $this->tab_video))); ?>
+				</div>
+				<div class="specifications-body hide" id="specifications_body">
+					<?php echo($this->partial('boat-show/view-ad--tab-specifications.phtml', array('tab_specifications' => $this->tab_specifications))); ?>
+				</div>
+				<div class="dealer-info-body hide" id="dealer_info_body">
+					<?php echo($this->partial('boat-show/view-ad--tab-dealer-info.phtml', array('tab_dealer_info' => $this->tab_dealer_info))); ?>
+				</div>
+				<div class="request-info-body hide" id="request_info_body">
+					<?php echo($this->partial('boat-show/view-ad--tab-request-info.phtml', array('tab_request_info' => $this->tab_request_info))); ?>
+				</div>
+			</div>
+		</div>
+		<div class="right">
+			<div class="question">Have Questions?</div>
+			<div class="statement">Chat with a live person.</div>
+			<div class="owner-info">
+				<div class="oi-left"><img src="<?php echo(BoatAd::getAdOwnerLogoUrl($this->ad_id)); ?>"></div>
+				<div class="oi-right">
+					<div class="name"><?php echo(BoatAd::getAdOwnerFirstName($this->ad_id)); ?></div>
+					<div class="company-name"><?php echo(BoatAd::getAdOwnerCompanyName($this->ad_id)); ?></div>
+				</div>
+			</div>
+			<?php if(null === $this->fHideChat) { ?>
+				<!-- <?php echo($this->partial('vbs-chat/vbs-frontend.phtml', array('vbs_chat_info' => $this->vbs_chat_info))); ?> -->
+				<?php echo($this->partial('basic-chat/basic-chat-frontend.phtml', array('vbs_chat_info' => $this->vbs_chat_info))); ?>
+			<?php } else { ?>
+				<div class="no-chat">NO CHAT FOR YOU! :)</div>
+			<?php } ?>
+		</div>
+	</div>
+</div>

@@ -1,0 +1,41 @@
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/boatplatform-php/!svn/ver/5599/trunk/application/default/views/scripts/basic-chat
+END
+ajax-send-message.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 106
+/boatplatform-php/!svn/ver/5425/trunk/application/default/views/scripts/basic-chat/ajax-send-message.phtml
+END
+vbs-frontend-example-dom.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 113
+/boatplatform-php/!svn/ver/5425/trunk/application/default/views/scripts/basic-chat/vbs-frontend-example-dom.phtml
+END
+ajax-get-recent-messages.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 113
+/boatplatform-php/!svn/ver/5425/trunk/application/default/views/scripts/basic-chat/ajax-get-recent-messages.phtml
+END
+index.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/boatplatform-php/!svn/ver/5425/trunk/application/default/views/scripts/basic-chat/index.phtml
+END
+ajax-get-room-log.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 106
+/boatplatform-php/!svn/ver/5425/trunk/application/default/views/scripts/basic-chat/ajax-get-room-log.phtml
+END
+basic-chat-frontend.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 108
+/boatplatform-php/!svn/ver/5599/trunk/application/default/views/scripts/basic-chat/basic-chat-frontend.phtml
+END

@@ -1,0 +1,54 @@
+<?php
+	//construct a multi-dimensional array so that organizing for the display is a bit easier
+	$iChunkSize = 6;
+	$iCount = 0;
+	$iCurrentChunk = 0;
+	$aImages = array();
+	foreach($this->tab_photos['images'] as $image)
+	{
+		if($iCount == $iChunkSize)
+			$iCurrentChunk++;
+		$aImages[$iCurrentChunk][] = $image;
+		$iCount++;
+	}
+	//die('aImages :<pre>' . print_r($aImages, true) . '</pre>');
+?>
+<div class="display">
+	<?php $sFullClass = 'show'; ?>
+	<?php foreach($this->tab_photos['images'] as $image) { ?>
+		<div class="fullsize <?php echo($sFullClass); ?>" id="fullsize_<?php echo($image->image_id); ?>">
+			<?php /* ?>
+			<div class="image-original"><img src="<?php echo $image->getImagePath(AdImage::FULL); ?>" alt="<?php echo $image->description ?>" /></div>
+			<?php */ ?>
+			<div class="image"><img src="<?php echo $image->getImagePath(AdImage::VBS_FULL); ?>" alt="<?php echo $image->description ?>" /></div>
+			<div class="left-arrow" id="fullsize_pager_left_<?php echo($image->image_id); ?>"><</div>
+			<div class="right-arrow" id="fullsize_pager_right_<?php echo($image->image_id); ?>">></div>
+			<script>
+				$(document).ready(function(){
+					$('#fullsize_pager_left_<?php echo($image->image_id); ?>').click(function(){vbsShiftAdPhotoLeft(<?php echo($image->image_id); ?>);});
+					$('#fullsize_pager_right_<?php echo($image->image_id); ?>').click(function(){vbsShiftAdPhotoRight(<?php echo($image->image_id); ?>);});
+				});
+			</script>
+		</div>
+		<?php $sFullClass = 'hide'; ?>
+	<?php } ?>
+</div>
+<div class="nav">
+	<?php $sChunkClass = 'show'; ?>
+	<?php $sThumbClass = 'im-special'; ?>
+	<?php foreach($aImages as $iChunkKey => $aChunk) { ?>
+		<div class="thumb-chunk <?php echo($sChunkClass); ?>" id="thumb_chunk_<?php echo($iChunkKey); ?>">
+			<?php foreach($aChunk as $iImageKey => $aImage) { ?>
+				<div class="thumbnail <?php echo($sThumbClass); ?>" id="thumbnail_<?php echo($aImage->image_id); ?>"><img src="<?php echo $aImage->getImagePath(AdImage::VBS_THUMB); ?>" alt="<?php echo $aImage->description ?>" /></div>
+				<script type="text/javascript">
+					$(document).ready(function(){
+						$('#thumbnail_<?php echo($aImage->image_id); ?>').click(function(){vbsSwitchAdPhoto('<?php echo($aImage->image_id); ?>');});
+						vbsConfig['imageids'][<?php echo($aImage->image_id); ?>]={'imageid':'<?php echo($aImage->image_id); ?>','adid':'<?php echo($aImage->ad_id); ?>','chunkid':'<?php echo($iChunkKey); ?>'};
+					});
+				</script>
+				<?php $sThumbClass = ''; ?>
+			<?php } ?>
+		</div>
+		<?php $sChunkClass = 'hide'; ?>
+	<?php } ?>
+</div>

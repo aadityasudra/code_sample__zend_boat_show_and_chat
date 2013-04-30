@@ -1,0 +1,105 @@
+<table class="boat-ad-specifications">
+	<tr class="on">
+		<td class="label">Category:</td>
+		<td class="data"><?php echo($this->tab_specifications['boat']->category); ?></td>
+		<td class="label">Water Capacity:</td>
+		<td class="data"><?php echo($this->ubMeasurement()->displayVolume($this->tab_specifications['boat']->water_capacity)); ?></td>
+	</tr>
+	<tr class="off">
+		<td class="label">Type Cuddy:</td>
+		<td class="data">
+						<?php echo $this->tab_specifications['boat']->type_1; ?>
+						<?php if ( !empty($this->tab_specifications['boat']->type_2) ){ ?>
+						/<?php echo $this->tab_specifications['boat']->type_2; ?>
+						<?php } if ( !empty($this->tab_specifications['boat']->type_3) ) {?>
+						/<?php echo $this->tab_specifications['boat']->type_3; ?>
+						<?php } ?>
+		</td>
+		<td class="label">Holding Tank Details:</td>
+		<td class="data"><?php echo($this->tab_specifications['boat']->holding_tank); ?></td>
+	</tr>
+	<tr class="on">
+		<td class="label">Manufacturer:</td>
+		<td class="data"><?php echo($this->tab_specifications['boat']->manufacturer); ?></td>
+		<td class="label">Holding Tank Size:</td>
+		<td class="data"><?php echo($this->ubMeasurement()->displayVolume($this->tab_specifications['boat']->holding_tank_size)); ?></td>
+	</tr>
+	<tr class="off">
+		<td class="label">Model:</td>
+		<td class="data"><?php echo($this->tab_specifications['boat']->model_name); ?></td>
+		<td class="label">Passengers:</td>
+		<td class="data"><?php echo($this->tab_specifications['boat']->passengers); ?></td>
+	</tr>
+	<tr class="on">
+		<td class="label">Year:</td>
+		<td class="data"><?php echo($this->tab_specifications['boat']->year); ?></td>
+		<td class="label">Sleeps:</td>
+		<td class="data"><?php echo($this->tab_specifications['boat']->sleeps); ?></td>
+	</tr>
+	<tr class="off">
+		<td class="label">Length/LOA:</td>
+		<td class="data"><?php echo($this->ubMeasurement()->displayLength($this->tab_specifications['boat']->length)); ?></td>
+		<td class="label">Hull Designer:</td>
+		<td class="data"><?php echo($this->tab_specifications['boat']->hull_designer); ?></td>
+	</tr>
+	<tr class="on">
+		<td class="label">Price:</td>
+		<td class="data"><?php echo($this->tab_specifications['ad']->price_usd) ?> / <?php echo($this->tab_specifications['ad']->price_eur); ?></td>
+		<td class="label">Engine Manufacturer:</td>
+		<td class="data"><?php echo($this->tab_specifications['boat']->engine_manufacturer); ?></td>
+	</tr>
+	<tr class="off">
+		<td class="label">Condition:</td>
+		<td class="data"><?php echo($this->tab_specifications['boat']->codition); ?></td>
+		<td class="label">Engine Model:</td>
+		<td class="data"><?php echo($this->tab_specifications['boat']->engine_model); ?></td>
+	</tr>
+	<tr class="on">
+		<td class="label">Boat's Name:</td>
+		<td class="data"><?php echo($this->tab_specifications['boat']->boat_name); ?></td>
+		<td class="label">Engine Type:</td>
+		<td class="data"><?php echo($this->tab_specifications['boat']->engine_type); ?></td>
+	</tr>
+	<tr class="off">
+		<td class="label">Stock Number:</td>
+		<td class="data"><?php echo($this->tab_specifications['ad']->stock_number); ?></td>
+		<td class="label">Number of Engines:</td>
+		<td class="data"><?php echo($this->tab_specifications['boat']->number_of_engines); ?></td>
+	</tr>
+	<tr class="on">
+		<td class="label">Location:</td>
+		<td class="data"><?php echo($this->tab_specifications['boat']->location(true)); ?></td>
+		<td class="label">Engine Drive:</td>
+		<td class="data"><?php echo($this->tab_specifications['boat']->engine_drive); ?></td>
+	</tr>
+	<tr class="off">
+		<td class="label">Beam:</td>
+		<td class="data"><?php echo($this->ubMeasurement()->displayLength($this->tab_specifications['boat']->beam)); ?></td>
+		<td class="label">Horsepower:</td>
+		<td class="data"><?php echo( ( ($this->tab_specifications['boat']->total_horsepower > 0) ? $this->tab_specifications['boat']->total_horsepower . ' hp' : 'N/A' ) ); ?></td>
+	</tr>
+	<tr class="on">
+		<td class="label">Draft:</td>
+		<td class="data"><?php echo($this->ubMeasurement()->displayLength($this->tab_specifications['boat']->draft)); ?></td>
+		<td class="label">Engine Year:</td>
+		<td class="data"><?php echo($this->tab_specifications['boat']->engine_year); ?></td>
+	</tr>
+	<tr class="off">
+		<td class="label">LWL:</td>
+		<td class="data"><?php echo($this->ubMeasurement()->displayLength($this->tab_specifications['boat']->lwl)); ?></td>
+		<td class="label">Engine Volume:</td>
+		<td class="data"><?php echo($this->ubMeasurement()->displayEngineVolume($this->tab_specifications['boat']->engine_volume)); ?></td>
+	</tr>
+	<tr class="on">
+		<td class="label">Displacement:</td>
+		<td class="data"><?php echo($this->ubMeasurement()->displayWeight($this->tab_specifications['boat']->displacement)); ?></td>
+		<td class="label">Engine Hours:</td>
+		<td class="data"><?php echo($this->tab_specifications['boat']->engine_hours); ?></td>
+	</tr>
+	<tr class="off">
+		<td class="label">Ballast:</td>
+		<td class="data"><?php echo($this->tab_specifications['boat']->ballast); ?></td>
+		<td class="label">Fuel Type:</td>
+		<td class="data"><?php echo(Lists::getFuelType($this->tab_specifications['boat']->fuel_type)); ?></td>
+	</tr>
+</table>

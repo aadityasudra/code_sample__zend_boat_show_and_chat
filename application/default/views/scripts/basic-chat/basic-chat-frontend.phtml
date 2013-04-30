@@ -1,0 +1,42 @@
+<script>
+	var chatCfg = new Object();
+	chatCfg['busy'] = false;
+	chatCfg['lastboatshowchatid'] = 0;
+	chatCfg['chatrowonoff'] = 'on';
+	chatCfg['domain'] = '<?php echo($this->vbs_chat_info['hostname']); ?>';
+	chatCfg['adid'] = '<?php echo($this->vbs_chat_info['ad_id']); ?>';
+	chatCfg['boatshowid'] = '<?php echo($this->vbs_chat_info['boat_show_id']); ?>';
+	chatCfg['heartbeatdelayseconds'] = 5;
+	chatCfg['userwaitseconds'] = 3;
+	chatCfg['datetimeshort'] = '<?php echo($this->vbs_chat_info['datetimeshort']); ?>';
+</script>
+<?php
+$this->headScript()->appendFile('/js/print_r.js');
+$this->headScript()->appendFile('/js/trim.js');
+$this->headScript()->appendFile('/js/vbs-chat.js');
+?>
+<div class="vbs-chat">
+	<div class="chat-status">(Status Indicator) <span id="status_indicator"><img src="/images/wait_blue_pulse_stopped.gif"></span></div>
+	<div class="the-chat" id="the_outer_chat">
+		<table><tr><td id="the_chat">
+			<div class="chat-row on system">
+				<div class="name system">System</div>
+				<div class="message"><i>Initializing VBS Chat..</i></div>
+			</div>
+		</td></tr></table>
+	</div>
+	<div class="your-message">Your Message<?php if(isset($_SESSION['userauth'])) { echo(' <span class="chat-as-name-display">[ ' . $_SESSION['userauth']['firstname'] . ' ]</span>'); } ?></div>
+	<div class="user-input"><textarea name="chat-input" id="the_message"></textarea></div>
+	<div class="button-and-login">
+		<div class="send"><input type="submit" value="Send" id="the_send_button"></div>
+<?php if(!isset($_SESSION['userauth'])) { ?>
+		<div class="login-register">
+			<div class="message">You must be logged in to post.</div>
+			<div class="links"><a href="javascript:;" id="ajax_login_link_chat">Log in</a> or <a href="javascript:;" id="ajax_register_link_chat">Sign-Up</a></div>
+		</div>
+<?php } ?>
+	</div>
+</div>
+<div class="vbs-chat-register">
+	<?php echo($this->partial('elements/ajax_register.phtml')); ?>
+</div>

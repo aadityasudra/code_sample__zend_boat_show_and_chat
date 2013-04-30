@@ -1,0 +1,12 @@
+<div class="left-pane">
+	<div class="main-image"><img src='<?php echo(BoatShow::getDealerInfoImagePath($this->tab_dealer_info['user_id'], $this->tab_dealer_info['data']->ad_id, 'bsdi_large_image', 'relative')); ?>'></div>
+	<div class="description"><?php echo($this->tab_dealer_info['data']->description); ?></div>
+</div>
+<div class="right-pane">
+	<div class="small-image"><img src="<?php echo(BoatShow::getDealerInfoImagePath($this->tab_dealer_info['user_id'], $this->tab_dealer_info['data']->ad_id, 'bsdi_small_image', 'relative')); ?>"></div>
+	<div class="name"><?php echo($this->tab_dealer_info['data']->name); ?></div>
+	<div class="address-street"><?php echo($this->tab_dealer_info['data']->addr1); ?></div>
+	<div class="address-street"><?php echo($this->tab_dealer_info['data']->addr2); ?></div>
+	<div class="address-city-state-zip"><?php echo($this->tab_dealer_info['data']->city); ?>, <?php echo($this->tab_dealer_info['data']->state); ?> <?php echo($this->tab_dealer_info['data']->zip); ?></div>
+	<div class="phone"><?php echo($this->tab_dealer_info['data']->phone); ?> <?php echo($this->tab_dealer_info['data']->ext); ?></div>
+</div>

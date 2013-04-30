@@ -1,0 +1,65 @@
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/boatplatform-php/!svn/ver/5744/trunk/application/default/views/scripts/boat-show
+END
+view-ad--tab-request-info.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 113
+/boatplatform-php/!svn/ver/5278/trunk/application/default/views/scripts/boat-show/view-ad--tab-request-info.phtml
+END
+view-ad.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/boatplatform-php/!svn/ver/5425/trunk/application/default/views/scripts/boat-show/view-ad.phtml
+END
+view-ad--tab-specifications.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 115
+/boatplatform-php/!svn/ver/5278/trunk/application/default/views/scripts/boat-show/view-ad--tab-specifications.phtml
+END
+view-ad--tab-dealer-info.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 112
+/boatplatform-php/!svn/ver/5359/trunk/application/default/views/scripts/boat-show/view-ad--tab-dealer-info.phtml
+END
+view-ad--tab-video.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 106
+/boatplatform-php/!svn/ver/5278/trunk/application/default/views/scripts/boat-show/view-ad--tab-video.phtml
+END
+index.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/boatplatform-php/!svn/ver/5386/trunk/application/default/views/scripts/boat-show/index.phtml
+END
+verify-lead.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 99
+/boatplatform-php/!svn/ver/5278/trunk/application/default/views/scripts/boat-show/verify-lead.phtml
+END
+view-ad--tab-photos.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 107
+/boatplatform-php/!svn/ver/5278/trunk/application/default/views/scripts/boat-show/view-ad--tab-photos.phtml
+END
+dealer_info_form.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 104
+/boatplatform-php/!svn/ver/5359/trunk/application/default/views/scripts/boat-show/dealer_info_form.phtml
+END
+view.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/boatplatform-php/!svn/ver/5744/trunk/application/default/views/scripts/boat-show/view.phtml
+END

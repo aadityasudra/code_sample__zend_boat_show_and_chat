@@ -1,0 +1,68 @@
+<?php
+//$this->headLink()->appendStylesheet('/css/boat-show-homepage.css');
+$this->headScript()->appendFile('/js/vbs-homepage.js');
+?>
+<div class="boat-show-homepage">
+	<div class="main">
+		<div class="left">
+			<div class="boat-show-info">
+<?php if($this->bIsShowRunning) { ?>
+				<!-- current boat show is happening now! -->
+				<div class="currently-running">
+					<?php /* "the boat show for *blah blah* is now open.." */ ?>
+					<div class="top-text">The <span>Boat Show</span> for</div>
+					<div class="mid-text"><?php echo($this->sCurrentShowWording); ?></div>
+					<div class="low-text">is now open</div>
+					<div class="enter-show-button"><a href="/boat-show/view/boat_show_id/<?php echo($this->oCurrentShow->boat_show_id); ?>">Enter the Boat Show &#9654;</a></div>
+				</div>
+<?php } else { ?>
+<?php
+	$this->headScript()->appendFile('/js/time-ticker.js');
+?>
+				<!-- whoops, you gotta wait till the next one :( -->
+				<div class="upcoming">
+					<div class="left">
+						<div class="title">Next <span>Boat Show</span> Starts</div>
+						<div class="ticker">
+							<script type="text/javascript">
+								displayTicker('<?php echo($this->sNextVBSDate); ?>', '<?php echo($this->sNowDate); ?>');
+							</script>
+						</div>
+					</div>
+					<div class="right">
+						<div class="description"><?php echo($this->sUpcomingShowWording); ?></div>
+						<div class="boat-icon"><img src="/images/boat-icon-vbs-home-large.png"></div>
+					</div>
+				</div>
+<?php } ?>
+			</div>
+			<div class="upcoming-shows">
+				<div class="title">- Upcoming Shows -</div>
+				<div class="detail">
+					<?php foreach($this->oNextThreeShows as $key => $oData) { ?>
+					<div class="show-box">
+						<div class="boat-icon"><img src="/images/boat-icon-vbs-home-medium.png"></div>
+						<div class="description"><?php echo(BoatShow::getLengthWording($oData->length_from, $oData->length_to)); ?></div>
+						<div class="date"><?php echo(date('F j', strtotime($oData->start_datetime))); ?></div>
+					</div>
+					<?php } ?>
+				</div>
+				<div class="newsletter">
+					<div class="mail"><img src="/images/envelope.png"></div>
+					<div class="blurb">Notify me about upcoming <span>Virtual Boat Shows</span></div>
+					<div class="form">
+						<form action="/newsletter/signup" method="post">
+							<input type="hidden" name="emailonly" value="true"/>
+							<input type="hidden" name="ams_id" value="9681"/>
+							<div class="newsletter-signup">
+								<input type="text" name="newsletter_signup[email]" value="Enter your email" id="newsletter_signup_vbs_active">
+								<input type="submit" value="Submit">
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="right"><img src="/images/vbs-immersion.png"></div>
+	</div>
+</div>

@@ -1,0 +1,65 @@
+<?php if(!isset($this->paging_info['count'])) { ?>
+	<div class="no-results-found">Whoops!  No boats found for the criteria supplied!</div>
+<?php } else { ?>
+	<div class="view-boat-show-ads">
+		<div class="header">
+			<div class="image"><img src="/images/boat-icon-vbs-home-medium.png"></div>
+			<div class="text"><?php echo($this->sShowLengthText); ?></div>
+		</div>
+		<div class="ads">
+<?php
+	$iColumns = 5;
+	$iColumnCount = 1;
+	$sRowEndInsert = '';
+	echo('<table class="boat-show-grid"><tr>');
+	//echo('<div class="boat-row">');
+	foreach($this->oBoatShowAds as $key => $data) {
+		if($iColumnCount == $iColumns)
+		{
+			$sRowEndInsert = ' row-end';
+			$iColumnCount = 1;
+			if($key != ($this->resultsPerPage - 1)) {
+				//$sDivEndStartInsert = '</div><div class="boat-row">';
+				$sDivEndStartInsert = '</tr><tr>';
+			}
+		} else {
+			$sDivEndStartInsert = '';
+			$iColumnCount++;
+		}
+		$oImage = AdImage::getFirstImageForAd($data->ad_id);
+		$sImageUrl = $oImage->getImagePath(AdImage::VBS_LISTING_THUMB);
+		$sViewAdUrl = '/boat-show/view-ad/boat_show_id/' . $this->iBoatShowID . '/ad_id/' . $data->ad_id;
+		// note to self : chunk these into div's of collections based on $iColumns
+?>
+			<td>
+			<div class="im-a-boat">
+				<!-- <div class="user-id"><?php echo($data->user_id); ?></div> -->
+				<!-- <div class="ad-id"><?php echo($data->ad_id); ?></div> -->
+				<div class="image"><a href="<?php echo($sViewAdUrl); ?>"><img src="<?php echo($sImageUrl); ?>"></a></div>
+				<div class="model"><?php echo($data->model_name); ?></div>
+				<div class="manufacturer"><?php echo($data->manufacturer_name); ?></div>
+<?php /*				<div class="length"><span>Length:</span> <?php echo($this->ubMeasurement()->displayLength($data->length)); ?></div> */ ?>
+				<div class="organization-name"><b><?php echo($data->organization_name); ?></b></div>
+				<div class="year"><span>Year:</span> <?php echo($data->year); ?></div>
+				<div class="price"><span>Price:</span> <?php echo(Ad::formatPrice($data->price_dollars, $data->price_currency)); ?></div>
+			</div>
+			</td>
+<?php
+		echo($sDivEndStartInsert);
+		$sRowEndInsert = '';
+	}
+	echo('</tr></table>');
+	//echo('</div>');
+?>
+		</div>
+		<div class="pagination">
+			<div class="inner">
+				<div class="previous"><?php if($this->paging_info['page'] != 1) { ?><a href="/boat-show/view/boat_show_id/<?php echo($this->iBoatShowID); ?>/page/1<?php echo($this->sTypeArgInsert); ?><?php echo($this->sManuArgInsert); ?>"><?php } ?><<?php if($this->paging_info['page'] != 1) { ?></a><?php } ?></div>
+				<?php for($x = 1; $x < ($this->paging_info['total_pages'] + 1); $x++) { ?>
+					<div class="pagination-dot<?php echo(($this->paging_info['page'] == $x) ? ' current-page' : ''); ?>"><a href="/boat-show/view/boat_show_id/<?php echo($this->iBoatShowID); ?>/page/<?php echo($x); ?><?php echo($this->sTypeArgInsert); ?><?php echo($this->sManuArgInsert); ?>"><?php echo($x); ?></a></div>
+				<?php } ?>
+				<div class="next"><?php if($this->paging_info['page'] != $this->paging_info['total_pages']) { ?><a href="/boat-show/view/boat_show_id/<?php echo($this->iBoatShowID); ?>/page/<?php echo($this->paging_info['page'] + 1); ?><?php echo($this->sTypeArgInsert); ?><?php echo($this->sManuArgInsert); ?>"><?php } ?>><?php if($this->paging_info['page'] != $this->paging_info['total_pages']) { ?></a><?php } ?></div>
+			</div>
+		</div>
+	</div>
+<?php } ?>

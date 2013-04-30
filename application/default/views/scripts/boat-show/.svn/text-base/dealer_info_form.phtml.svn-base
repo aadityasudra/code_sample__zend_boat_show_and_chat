@@ -1,0 +1,78 @@
+<?php
+	if(null !== $this->boat_show_dealer_info) {
+		$boat_show_dealer_info_id = $this->boat_show_dealer_info->boat_show_dealer_info_id;
+		$name                     = $this->boat_show_dealer_info->name;
+		$addr1                    = $this->boat_show_dealer_info->addr1;
+		$addr2                    = $this->boat_show_dealer_info->addr2;
+		$city                     = $this->boat_show_dealer_info->city;
+		$state                    = $this->boat_show_dealer_info->state;
+		$zip                      = $this->boat_show_dealer_info->zip;
+		$phone                    = $this->boat_show_dealer_info->phone;
+		$ext                      = $this->boat_show_dealer_info->ext;
+		$description              = $this->boat_show_dealer_info->description;
+	} else { 
+		$boat_show_dealer_info_id = null;
+		$name                     = null;
+		$addr1                    = null;
+		$addr2                    = null;
+		$city                     = null;
+		$state                    = null;
+		$zip                      = null;
+		$phone                    = null;
+		$ext                      = null;
+		$description              = null;
+	}
+?>
+<div class="contact-information vbs">
+	<hr class="grey-dotted"/>
+	<input type="hidden" name="MAX_FILE_SIZE" value="2097152" />
+	<input type="hidden" name="boat_show_dealer_info[boat_show_dealer_info_id]" value="<?php echo($boat_show_dealer_info_id); ?>">
+	<h3>Virtual Boat Show</h3>
+	<h4>Dealer Information for this Ad</h4>
+	<dl>
+		<dt>Dealer Name:</dt>
+		<dd><input type="text" name="boat_show_dealer_info[name]" value="<?php echo($name); ?>"></dd>
+	</dl>
+	<dl>
+		<dt>Address 1:</dt>
+		<dd><input type="text" name="boat_show_dealer_info[addr1]" value="<?php echo($addr1); ?>"></dd>
+	</dl>
+	<dl>
+		<dt>Address 2:</dt>
+		<dd><input type="text" name="boat_show_dealer_info[addr2]" value="<?php echo($addr2); ?>"></dd>
+	</dl>
+	<dl>
+		<dt>City:</dt>
+		<dd><input type="text" name="boat_show_dealer_info[city]" value="<?php echo($city); ?>"></dd>
+	</dl>
+	<dl>
+		<dt>State:</dt>
+		<dd><input type="text" name="boat_show_dealer_info[state]" value="<?php echo($state); ?>"></dd>
+	</dl>
+	<dl>
+		<dt>Zip:</dt>
+		<dd><input type="text" name="boat_show_dealer_info[zip]" value="<?php echo($zip); ?>"></dd>
+	</dl>
+	<dl>
+		<dt>Phone:</dt>
+		<dd><input type="text" name="boat_show_dealer_info[phone]" value="<?php echo($phone); ?>"></dd>
+	</dl>
+	<dl>
+		<dt>Ext:</dt>
+		<dd><input type="text" name="boat_show_dealer_info[ext]" value="<?php echo($ext); ?>"></dd>
+	</dl>
+	<dl>
+		<dt>Description:</dt>
+		<dd><textarea cols="45" rows="15" name="boat_show_dealer_info[description]"><?php echo($description); ?></textarea></dd>
+	</dl>
+	<dl>
+		<dt>Large Image (<?php echo(BoatShow::DEALER_INFO_LARGE_IMAGE_X); ?>x<?php echo(BoatShow::DEALER_INFO_LARGE_IMAGE_Y); ?>):</dt>
+		<dd><input type="file" name="bsdi_large_image"> (.jpg only)</dd>
+	</dl>
+	<dl>
+		<dt>Small Image (<?php echo(BoatShow::DEALER_INFO_SMALL_IMAGE_X); ?>x<?php echo(BoatShow::DEALER_INFO_SMALL_IMAGE_Y); ?>):</dt>
+		<dd><input type="file" name="bsdi_small_image"> (.jpg only)</dd>
+	</dl>
+</div>
+<div id="large-dealer-info-image"><span>Large Image</span><img src="<?php echo(BoatShow::getDealerInfoImagePath(User::getCurrentUserId(), $this->ad_id, 'bsdi_large_image', 'relative')); ?>"></div>
+<div id="small-dealer-info-image"><span>Small Image</span><img src="<?php echo(BoatShow::getDealerInfoImagePath(User::getCurrentUserId(), $this->ad_id, 'bsdi_small_image', 'relative')); ?>"></div>

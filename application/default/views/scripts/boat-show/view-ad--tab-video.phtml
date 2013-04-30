@@ -1,0 +1,24 @@
+<?php
+$this->headLink()
+	->appendStylesheet('/css/jquery/plugins/colorbox/colorbox.css', null)
+;
+$this->inlineScript()
+	->appendFile('/js/jquery/plugins/jquery.colorbox.js')
+	->appendFile('/js/media-gallery.js')
+	->appendFile('/js/swfobject.js')
+;
+
+if(null !== $this->tab_video['youtube_video_id'])
+{
+
+	$sEmbeddedVideoID = 'boat-ad-video-' . $this->tab_video['youtube_video_id'];
+	echo($this->embedYouTube($this->tab_video['youtube_video_id'], 'embed_player', array('width' => 680, 'height' => 510, 'id' => $sEmbeddedVideoID)));
+	$this->inlineScript()->appendScript('swfobject.switchOffAutoHideShow(); swfobject.registerObject("' . $sEmbeddedVideoID . '", "9.0.0");');
+
+} else {
+
+	echo('no video found');
+
+}
+
+?>

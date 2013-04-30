@@ -1,0 +1,44 @@
+<?php if(null === $this->tab_request_info['form_processed']) { ?>
+<div class="signup-form">
+	<div class="title">Get more information on this boat.</div>
+	<div class="info">Once verified, one of our associates will contact you.</div>
+	<form action="/boat-show/request-info-processing" method="POST" id="request_info_form">
+	<input type="hidden" name="boat_show_id" value="<?php echo($this->tab_request_info['boat_show_id']); ?>">
+	<input type="hidden" name="ad_id" value="<?php echo($this->tab_request_info['ad_id']); ?>">
+	<div class="form">
+		<table>
+			<tr>
+				<td class="label" id="ri_email_label"><span class="required">*</span> Email</td>
+				<td class="input-text"><input type="text" name="email" id="ri_email"></td>
+			</tr>
+			<tr>
+				<td class="label" id="ri_confirm_email_label"><span class="required">*</span> Confirm Email</td>
+				<td class="input-text"><input type="text" name="confirm_email" id="ri_confirm_email"></td>
+			</tr>
+			<tr>
+				<td class="label">First Name</td>
+				<td class="input-text"><input type="text" name="first_name"></td>
+			</tr>
+			<tr>
+				<td class="label">Last Name</td>
+				<td class="input-text"><input type="text" name="last_name"></td>
+			</tr>
+			<tr>
+				<td class="label">Zip Code</td>
+				<td class="input-zip-code"><input type="text" name="zip_code"></td>
+			</tr>
+			<tr>
+				<td>&nbsp;</td>
+				<td><input type="submit" value="Submit"></td>
+			</tr>
+		</table>
+	</div>
+	</form>
+</div>
+<?php } else { ?>
+<div class="thank-you">
+	<div class="line-one">Thank you for your interest in this boat.</div>
+	<div class="line-two">One of our associates will contact you within 3 to 5 days.</div>
+	<div class="line-three"><a href="/boat-show/view-ad/boat_show_id/<?php echo($this->iBoatShowID); ?>">Back to the Virtual Boat Show ></a></div>
+</div>
+<?php } ?>
